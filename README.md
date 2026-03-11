@@ -1,9 +1,9 @@
 # Exp3-Sobel-edge-detection-filter-using-CUDA-to-enhance-the-performance-of-image-processing-tasks.
-<h3>AIM:</h3>
-<h3>ENTER YOUR NAME</h3>
-<h3>ENTER YOUR REGISTER NO</h3>
-<h3>EX. NO</h3>
-<h3>DATE</h3>
+
+<h3>NAME : THILAK RAJ . P</h3>
+<h3>REGISTER NO. : 212224040353</h3>
+<h3>EX. NO. : 3</h3>
+<h3>DATE : 11 - 03 - 2026</h3>
 <h1> <align=center> Sobel edge detection filter using CUDA </h3>
   Implement Sobel edge detection filtern using GPU.</h3>
 Experiment Details:
@@ -119,7 +119,7 @@ int main()
 
     // CUDA configuration
     dim3 blockSize(16,16);
-    dim3 gridSize(ceil(width/16.0), ceil(height/16.0));
+    dim3 gridSize((width + blockSize.x - 1) / blockSize.x,(height + blockSize.y - 1) / blockSize.y);
 
     cudaEventRecord(start);
 
@@ -157,13 +157,10 @@ int main()
 
 | Input Image | Output Image |
 |-------------|--------------|
-| ![image](https://github.com/user-attachments/assets/dff93c24-1abe-46f4-9a36-34c369600f2d)| <img width="297" height="411" alt="download" src="https://github.com/user-attachments/assets/6772d6db-772f-454e-9e70-304cafd92dcb" /> |
+| ![image (1)](https://github.com/user-attachments/assets/088d4318-0146-4e25-87c2-a6e0223ff36a) | <img width="389" height="411" alt="image" src="https://github.com/user-attachments/assets/89c1e8a4-d9d1-4bfc-aaaa-19482923717b" /> |
 
-## RESULT:
 
-Thus the program has been executed by using CUDA to perform Sobel edge detection on a grayscale image using parallel GPU threads, thereby enhancing the performance of image processing tasks.
-
-### Questions:
+## Answers to Questions:
 
 1.What challenges did you face while implementing the Sobel filter for color images?
 
@@ -190,10 +187,30 @@ The CUDA and CPU implementations produced similar edge detection results since b
    - Reducing redundant memory accesses through memory coalescing.
     
    - Processing multiple pixels per thread for better GPU utilization.
-Deliverables:
 
-Modified CUDA code with comments explaining your changes.
-A report summarizing your findings, including graphs of execution times and a comparison of outputs.
-Answers to the questions posed in the experiment.
-Tools Required:
+## Deliverables
+
+
+- **Report of Findings:**  
+  The Sobel edge detection filter was implemented using CUDA to improve the performance of image processing tasks. The program reads an input grayscale image and applies the Sobel operator to detect edges by computing the gradient in both horizontal and vertical directions. CUDA was used to parallelize the computation so that multiple pixels could be processed simultaneously using GPU threads organized in 2D grids and blocks.
+
+  The execution time of the CUDA implementation was measured using CUDA events. The results show that GPU-based processing significantly reduces the computation time compared to the CPU-based implementation. As the image size increases, the execution time also increases due to the larger number of pixels being processed. However, the CUDA implementation still performs faster because the GPU executes many threads in parallel.
+
+  A comparison between CPU and CUDA implementations shows that both produce similar edge detection results. The difference lies mainly in performance, where CUDA achieves faster execution due to parallel processing capabilities of the GPU.
+
+- **Performance Table:**
+  | Image Size  | Block Size | CUDA Execution Time |
+  | ----------- | ---------- | ------------------- |
+  | 256 × 256   | 8 × 8      | 0.163648 ms         |
+  | 512 × 512   | 16 × 16    | 0.161856 ms         |
+  | 1024 × 1024 | 32 × 32    | 0.196960 ms         |
+
+- **Performance Analysis:**
+  From the results, it can be observed that the CUDA implementation provides significant performance improvement compared to the CPU implementation. As the image resolution increases, the processing time also increases. However, the GPU handles larger workloads efficiently due to parallel execution of threads. Increasing the block size improves GPU utilization up to a certain limit, after which the performance gain becomes minimal.
+
+## RESULT:
+
+Thus the program has been executed by using CUDA to perform Sobel edge detection on a grayscale image using parallel GPU threads, thereby enhancing the performance of image processing tasks.
+
+
 
