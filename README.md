@@ -155,9 +155,10 @@ int main()
 ## OUTPUT:
 ## Sobel Edge Detection Result
 
-| Input Image | Output Image |
-|-------------|--------------|
-| ![image (1)](https://github.com/user-attachments/assets/088d4318-0146-4e25-87c2-a6e0223ff36a) | <img width="389" height="411" alt="image" src="https://github.com/user-attachments/assets/89c1e8a4-d9d1-4bfc-aaaa-19482923717b" /> |
+| Input Image | CUDA Output Image | CPU Output Image |
+|-------------|--------------|--------------|
+| ![image (1)](https://github.com/user-attachments/assets/088d4318-0146-4e25-87c2-a6e0223ff36a) | <img width="389" height="411" alt="image" src="https://github.com/user-attachments/assets/89c1e8a4-d9d1-4bfc-aaaa-19482923717b" /> | <img width="389" height="411" alt="image" src="https://github.com/user-attachments/assets/3f7cfa2d-9eef-49d8-a3d9-0f26b12efe55" /> |
+
 
 
 ## Answers to Questions:
@@ -204,6 +205,12 @@ The CUDA and CPU implementations produced similar edge detection results since b
   | 256 × 256   | 8 × 8      | 0.163648 ms         |
   | 512 × 512   | 16 × 16    | 0.161856 ms         |
   | 1024 × 1024 | 32 × 32    | 0.196960 ms         |
+
+  | Implementation | Execution Time |
+  | -------------- | -------------- |
+  | CPU (OpenCV)   | 30.23672103881836 ms |
+  | CUDA (GPU)     | ~0.16 ms       |
+
 
 - **Performance Analysis:**
   From the results, it can be observed that the CUDA implementation provides significant performance improvement compared to the CPU implementation. As the image resolution increases, the processing time also increases. However, the GPU handles larger workloads efficiently due to parallel execution of threads. Increasing the block size improves GPU utilization up to a certain limit, after which the performance gain becomes minimal.
